@@ -751,6 +751,9 @@ if not df_out_filt.empty and shap_cols:
         _base_var(feat_cols[rank_idx[i, k]])
         for i in range(n_events) for k in range(n_ranks)
     })
+    
+        
+    st.markdown('### Event scatter (driver value vs. outage duration)')
 
     fig_sc = make_subplots(
         rows=n_ranks, cols=1, shared_xaxes=True,
@@ -879,6 +882,8 @@ elif selected_horizon:
 else:
     rmse_cols_shown = []
 
+st.markdown('### Event table')
+    
 table_cols = ['outage_probability'] + stat_cols + rmse_cols_shown
 fmt        = {c: '{:.3f}' for c in ['outage_probability', 'duration_h', 'auc_customer_h']}
 fmt['peak_customers_out'] = '{:.0f}'
